@@ -1,0 +1,85 @@
+<aura:component  controller="Assessment_One"  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="listofacc" type="Account"/>
+    <aura:attribute name="editdata" type="Account"/>
+    <aura:attribute name="viewrecord" type="Account"/>
+    <aura:attribute name="isView" type="boolean" default="false"/>
+    <aura:attribute name="isEdit" type="boolean" default="false"/>
+    
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    
+    <aura:attribute name="truthy" type="sObject" default="true"/>
+    <aura:handler name="init" value="{!this}" action="{!c.fetchacc}"/>
+    
+    <aura:renderIf isTrue="{!v.isEdit}">
+        <lightning:input type="Text" name="AccountName" label="Account Name" value="{!v.editdata.Name}" />
+        <lightning:input type="Text" name="AccountNumber" label="AccountNumber" value="{!v.editdata.AccountNumber}" />
+        <lightning:button onclick="{!c.saveFunct}"  type="button" label="Save"/>
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.truthy}">
+        
+        <table>
+            <thead>
+                <th>Id</th> 
+                <th>AccountNumber</th> 
+                <th>Number</th>
+            </thead>
+            <tbody>
+                <tr> 
+                    <aura:iteration items="{!v.listofacc}" var="item" >
+                        <tr>
+                            <td>{!item.Id}</td>
+                            <td>{!item.AccountNumber}</td>
+                            <td>{!item.Name}</td>
+                            <lightning:button variant="Destructive" onclick="{!c.deleteFunc}" value="{!item.Id}" type="button" label="Delete"/> &nbsp;&nbsp;
+                            <lightning:button variant="Brand" onclick="{!c.editFunn}" value="{!item.Id}" type="button" label="Edit"/> &nbsp;&nbsp;
+                            <lightning:button variant="Success" onclick="{!c.showdetail}" value="{!item.Id}" type="button" label="View"/> &nbsp;&nbsp;
+                            
+                        </tr>
+                    </aura:iteration>
+                </tr>
+                
+            </tbody>
+        </table>
+    </aura:renderIf>
+    <aura:renderIf isTrue="{!v.isView}">
+        <aura:if isTrue="{!v.isOpen}">
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">About Sfdcmonkey.com</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                       
+                        <!-- <lightning:output fieldName="{!v.viewrecord.Name}" />-->
+                        <lightning:input disabled="true" type="Text" name="AccountName" label="Account Name" value="{!v.viewrecord.Name}" />
+                        <lightning:input disabled="true" type="Text" name="AccountNumber" label="AccountNumber" value="{!v.viewrecord.AccountNumber}" />
+                        <lightning:input disabled="true" type="Text" name="AccountNumber" label="AccountNumber" value="{!v.viewrecord.Industry}" />
+                        <lightning:input disabled="true" type="Text" name="AccountNumber" label="AccountNumber" value="{!v.viewrecord.Phone}" />
+                        <lightning:input disabled="true"  type="Text" name="AccountNumber" label="AccountNumber" value="{!v.viewrecord.AccountNumber}" />
+                        <lightning:input disabled="true" type="Text" name="AccountNumber" label="AccountNumber" value="{!v.viewrecord.ShippingAddress }" />
+                       <img src="https://bhavikjain238-dev-ed--c.documentforce.com/servlet/servlet.FileDownload?file=00P2v000022AbpC"/> 
+                    </div>
+                     <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                    </footer>
+                </div>
+            </section>
+             <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+        </aura:if>  
+        
+    </aura:renderIf>
+    
+    
+</aura:component>

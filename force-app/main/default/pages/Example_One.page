@@ -1,0 +1,12 @@
+<apex:page standardController="Account" >
+    <apex:form >
+     <apex:pageBlock title="New Account" helpTitle="Click for help" helpUrl="https://www.google.com">
+        <apex:pageBlockSection title="Account Details">
+        <apex:inputField label="Name" value="{!Account.name}"/>
+  
+        </apex:pageBlockSection>
+         
+    </apex:pageBlock>
+    </apex:form>
+   
+</apex:page>

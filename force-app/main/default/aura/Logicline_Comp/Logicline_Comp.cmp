@@ -1,0 +1,36 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="LogiclineApex" >
+    <aura:attribute name="AmountinUsd" type="decimal" />
+    <aura:attribute name="AmountinEuro" type="decimal" />
+    <aura:attribute name="attClosedDate" type="date" />
+    <aura:attribute name="attStageName" type="string" />
+    
+ 
+    <div> 
+        
+        
+        <div class="slds-col slds-size_1-of-2">
+            <lightning:input  label="Amount in USD" value="{!v.AmountinUsd}" type="decimal"  onchange="{!c.onChanges}"/>
+            <lightning:input label="Amount in Euro" value="{!v.AmountinEuro}" type="decimal" disabled="true"/>
+            <lightning:input label="Closed Date" type="Date" value="{!v.attClosedDate}" />
+            
+            <lightning:layoutItem size="12">
+                <lightning:select aura:id="select" name="select" label="Stage"  required="true" onchange="{!c.setStage}">
+                    <option value="">choose one...</option>
+                    <option value="Prospecting">Prospecting</option>
+                    <option value="Qualification">Qualification</option>
+                    <option value="Needs Analysis">Needs Analysis</option>
+                    <option value="Value Proposition">Value Proposition</option>
+                    <option value="Perception Analysis">Perception Analysis</option>
+                    <option value="Proposal/Price Quote">Proposal/Price Quote</option>
+                    <option value="Negotiation/Review">Negotiation/Review</option>
+                    <option value="Closed Won">Closed Won</option>
+                    <option value="Closed Lost">Closed Lost</option>
+                </lightning:select>
+            </lightning:layoutItem>
+            
+        </div>
+    </div>
+    <c:PaginationTestComponent oppCloseDate="{!v.attClosedDate}" oppStageName="{!v.attStageName}" oppAmountUsd="{!v.AmountinUsd}"/>
+
+    
+</aura:component>

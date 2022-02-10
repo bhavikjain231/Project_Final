@@ -1,0 +1,10 @@
+<apex:page >
+    <apex:form >
+    <apex:pageBlock >
+    <apex:pageBlockButtons >
+    <apex:commandButton value="Authorize" action="https://login.salesforce.com/services/oauth2/authorize?response_type=code
+&client_id=3MVG9YDQS5WtC11rm1S92uhC8hKtwhxuy7zhnBfNgodJRbIpjl7B0Wcsx32sScgEuxvjVCxLCE4NCtkTQ0DwK&redirect_uri=https%3A%2F%2Fbhavikjain238-dev-ed--c.visualforce.com%2Fapex%2FS2SISourceVF"/>    
+    </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

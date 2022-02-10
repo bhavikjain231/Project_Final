@@ -1,0 +1,30 @@
+<aura:component controller="AccountController"  >
+    <aura:attribute name ="ListofAcc" type ="Account" />
+    <aura:handler name="init" value="{!this}" action="{!c.fetchAccount}" />
+    
+    <div class="slds"> 
+
+    <table class="slds-table slds-table--bordered slds-table--striped">
+        <thead>
+            <tr>
+                <th scope="col"><span class="slds-truncate">Id</span></th>
+                <th scope="col"><span class="slds-truncate">Name</span></th>
+                <th scope="col"><span class="slds-truncate">Rating</span></th>
+                <th scope="col"><span class="slds-truncate">Industry</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.ListofAcc}" var="acc">
+                <tr>
+                    <td>{!acc.Id}</td>
+                    <td>{!acc.Name}</td>
+                    <td>{!acc.Rating}</td>
+                    <td>{!acc.Industry}</td>
+                   
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+        </div>
+        
+   </aura:component>

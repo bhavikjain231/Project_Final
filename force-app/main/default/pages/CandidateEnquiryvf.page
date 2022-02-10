@@ -1,0 +1,2 @@
+<apex:page standardController="Candidate_Enquiry__c" extensions="Rediret2" action="{!CreateStudent}" >
+</apex:page>

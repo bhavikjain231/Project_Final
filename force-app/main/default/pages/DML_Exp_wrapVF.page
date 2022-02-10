@@ -1,0 +1,33 @@
+<apex:page controller="DML_Exp_wrap">
+    <apex:form >
+        <apex:selectList size="1" value="{!selected}" style="width:120px" styleClass="border" >
+            <apex:selectOptions value="{!options}"/>
+           
+        </apex:selectList>
+        <apex:commandButton value="Update" action="{!updateRating}"  reRender="ps"/>
+           
+    <apex:dataTable value="{!leads}" var="a" frame="box" Width="900px" cellpadding="15" rules="rows" id="ps">
+        <apex:column >
+            <apex:facet name="header" >
+                <apex:inputCheckbox >
+               
+                <apex:actionSupport event="onclick" action="{!Onclikmethod}"/>
+               
+                </apex:inputCheckbox>
+            </apex:facet>
+            <apex:inputCheckbox value="{!a.flag}"/>                    
+        </apex:column>
+        <apex:column value="{!a.newlead.lastName}" headerValue="LastName"/>
+        <apex:column value="{!a.newlead.firstName}" headerValue="FirstName"/>
+        <apex:column value="{!a.newlead.industry}" headerValue="Industry"/>
+        <apex:column value="{!a.newlead.rating}" headerValue="Rating"/>
+        <apex:column value="{!a.newlead.phone}" headerValue="Phone"/>
+       
+       
+       
+       
+        </apex:dataTable>
+   
+   
+    </apex:form>
+</apex:page>

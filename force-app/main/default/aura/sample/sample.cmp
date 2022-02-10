@@ -1,0 +1,38 @@
+<aura:component controller="contactController">
+    
+    <aura:attribute name="ListOfContact" type="Contact[]" />
+    <aura:attribute name="flag" type="boolean" default="false" />
+    <aura:attribute name="flag1" type="boolean" default="false" />
+    <!--aura:handler name="init" value="{!this}" action="{!c.getContactLst}" /-->
+    
+    <div class="slds"> 
+    <!--lightning:spinner aura:id="spinnerId" class="slds-spinner_container" alternative="loading"/--> 
+     <lightning:button variant="brand" label="Get Contacts" title="Brand action" onclick="{!c.getContactLst }" />
+
+    <table class="slds-table slds-table--bordered slds-table--striped">
+        <thead>
+            <tr>
+                <th scope="col"><span class="slds-truncate">ID</span></th>
+                <th scope="col"><span class="slds-truncate">FirstName</span></th>
+                <th scope="col"><span class="slds-truncate">LastName</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:if isTrue="{!v.flag1}">
+              <lightning:spinner aura:id="spinnerId" class="slds-spinner_container" alternative="loading"/> 
+
+                </aura:if> 
+            <aura:if isTrue="{!v.flag}">
+            <aura:iteration items="{!v.ListOfContact}" var="con">
+                <tr>
+                    <td>{!con.Id}</td>
+                    <td>{!con.FirstName}</td>
+                    <td>{!con.LastName}</td>
+                </tr>
+            </aura:iteration>
+                </aura:if> 
+        </tbody>
+    </table>
+        </div>
+    
+</aura:component>

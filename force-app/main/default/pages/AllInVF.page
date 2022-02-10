@@ -1,0 +1,73 @@
+<apex:page controller="AllIn" lightningStylesheets="true" >
+    <apex:form id="ab" >
+        <apex:pageMessages />
+    <apex:pageBlock >
+        <apex:pageBlockSection columns="1" >
+        <apex:selectList value="{!selected}" size="1" label="Select Type" >
+            <apex:selectOptions value="{!op1}" />
+           
+        <apex:actionSupport event="onchange" action="{!Invoke}" reRender="ab" />
+        </apex:selectList>
+        <apex:selectList size="1" value="{!selected1}" label="Objects" >
+            <apex:selectOptions value="{!op2}" />
+       
+        <apex:actionSupport event="onchange" action="{!Invoke2}" reRender="ab"  />
+        </apex:selectList>
+        </apex:pageBlockSection>
+       
+        <apex:selectList size="10" multiselect="true" value="{!selected2}" style="width:100px;"  >
+            <apex:selectOptions value="{!op3}" />
+       
+       
+        </apex:selectList>
+        <apex:commandButton value="Move" action="{!invoke3}" reRender="ab" />
+        <apex:commandButton value="return" action="{!invoke4}" reRender="ab" />
+        <apex:selectList size="10" multiselect="true" value="{!selected3}" style="width:100px;" >
+            <apex:selectOptions value="{!op4}" />
+       
+       
+        </apex:selectList><br/>
+       
+        <apex:pageBlockTable value="{!wrp}"  var="a">
+            <apex:column >
+                <apex:selectList size="1" value="{!a.selected4}">
+                <apex:selectOptions value="{!a.field}"/>
+               
+                </apex:selectList>
+            </apex:column>
+            <apex:column >
+            <apex:selectList size="1"  value="{!a.selected5}" multiselect="false" >
+                <apex:selectOptions value="{!a.operator}" />
+               
+                </apex:selectList>
+            </apex:column>
+           
+            <apex:column >
+                <apex:inputtext value="{!a.value}" />
+            </apex:column>
+        <apex:column >
+            <apex:commandButton value="Add" action="{!invoke5}" reRender="ab" />
+            <apex:commandButton value="Delete" action="{!remove}" reRender="ab" />
+            </apex:column>
+       
+       
+        </apex:pageBlockTable>
+        CONDITION:
+        <apex:inputText value="{!condition}" /><br/>
+        <apex:commandButton value="fetch" action="{!invoke6}" reRender="ab" />
+        <apex:pageBlockTable value="{!sobj}" var="a" >
+            <apex:repeat value="{!s}" var="b" >
+                <apex:column value="{!a[b]}" />
+               
+           
+           
+            </apex:repeat>
+         
+       
+       
+        </apex:pageBlockTable>
+       
+        </apex:pageBlock>
+   
+    </apex:form>
+</apex:page>

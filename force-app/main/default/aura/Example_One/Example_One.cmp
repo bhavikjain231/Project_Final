@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute type ="string" name ="FirstName" />
+    <aura:attribute type ="string" name ="LastName" />
+    
+    FN<lightning:input type="text" value="{!v.FirstName}" /> <br/>
+    LN<lightning:input type="text" value="{!v.LastName}" />
+    
+    <lightning:button type="button" onclick="{!c.createContact}"  label="save" />
+
+
+</aura:component>
