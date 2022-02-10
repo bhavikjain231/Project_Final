@@ -1,11 +1,7 @@
 public class AccountController {
 @auraEnabled
     public static list<Account> getAccounts(){
-       //try-catch block
-       //try-catch block
-       //Aman Pansonic
-       //Final
-       //Bhavik
+       
         try{
              List<Account> acclistone = new List<Account>();
              acclistone = [Select Id,Name,Rating,Industry from Account order by createdDate DESC limit 10];
